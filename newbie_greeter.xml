@@ -61,6 +61,16 @@
    sequence="1"
   >
   </alias>
+  
+    
+   <alias
+   match="^ngreet help$"
+   enabled="y"
+   regexp="y"
+   script="help"
+   sequence="1"
+  >
+  </alias>
 </aliases>
 
 <script>
@@ -86,7 +96,7 @@ function new_greet(name, line, args)
 	-- Replace %%1 with playerName
 	randomGreeting = string.gsub(randomGreeting,"__PLAYERNAME__",playerName)
 	
-	Execute("newbie "..randomGreeting)
+	-- Execute("newbie "..randomGreeting)
 	ColourNote("Green","",randomGreeting)
 end
 

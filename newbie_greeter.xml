@@ -27,7 +27,7 @@
 
 <aliases>
   <alias
-   match="ngreet (?<playername>.*)$"
+   match="^ngreet (?<playername>.*)$"
    enabled="y"
    regexp="y"
    script="new_greet"
@@ -36,7 +36,7 @@
   </alias>
   
   <alias
-   match="ngreet add (?<message>.*)$"
+   match="^ngreet add (?<message>.*)$"
    enabled="y"
    regexp="y"
    script="add_greeting"
@@ -45,7 +45,7 @@
   </alias>
   
   <alias
-   match="ngreet del (?<messageNo>.*)$"
+   match="^ngreet del (?<messageNo>.*)$"
    enabled="y"
    regexp="y"
    script="del_greeting"
@@ -54,7 +54,7 @@
   </alias>
   
    <alias
-   match="ngreet list$"
+   match="^ngreet list$"
    enabled="y"
    regexp="y"
    script="list_greeting"

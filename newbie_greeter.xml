@@ -87,7 +87,7 @@ function new_greet(name, line, args)
 	playerName = args.playername
 
 	-- Get max in table, randomize, get greeting.
-	numMessages = table.getn(greetings)
+	numMessages = #greetings
 	randomNum = math.random(1,numMessages)
 	randomGreeting = greetings[randomNum]
 	

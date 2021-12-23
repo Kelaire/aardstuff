@@ -77,8 +77,6 @@
 
 <![CDATA[
 
-require "tprint"
-require "gmcphelper"
 require "serialize"
 
 function new_greet(name, line, args)
@@ -168,6 +166,10 @@ function OnPluginInstall()
 		ColourNote("#6600CC", "", "[", "#66FF66", "", "Newbie Greeter", "#6600CC", "", "]", "White", "", "  Previously installed, using old table")
 		loadstring(greetList) ()
 	end
+	
+	
+	DoAfterSpecial(.2, "help()", 12)
+
 end
 
 
@@ -196,8 +198,6 @@ function help()
 	Note()
 
 end
-
-DoAfterSpecial(.2, "help()", 12)
 
 ]]>
 

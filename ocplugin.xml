@@ -250,9 +250,12 @@ end
 -- Send the finish message to the group
 function finishOC()
 	ecn = getAliasName()
-	message="THIS IS TIMED! The commands are: wear signet, bow arb, wear signet, pretend to wear your mark, nod treasurer gtt If you are sad because you no longer have to wear a mark, I understand your pain. Thank you all for joining us today. See you next time.  give diamond keeper"
+	message="THIS IS TIMED! The commands are: wear signet, bow arb, wear signet, pretend to wear your mark, nod treasurer"
+	message2="If you are sad because you no longer have to wear a mark, I understand your pain. Thank you all for joining us today. See you next time."
 	
 	Execute(ecn .. " " .. message)
+	Execute(ecn .. " " .. message2)
+	Execute("give diamond keeper")
 end
 
 -- Send the OC Newbie Message

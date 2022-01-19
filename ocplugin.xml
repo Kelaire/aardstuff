@@ -250,8 +250,8 @@ end
 -- Send the finish message to the group
 function finishOC()
 	ecn = getAliasName()
-	message="THIS IS TIMED! The commands are: wear signet, bow arb, wear signet, pretend to wear your mark, nod treasurer"
-	message2="If you are sad because you no longer have to wear a mark, I understand your pain. Thank you all for joining us today. See you next time."
+	message="Thank you for joining, please pretend to wear your mark at this time. The final command sequence is timed. You need to complete these tasks quickly so you do not get left without a reward."
+	message2="Commands: @RWear signet, bow arb, wear signet, nod treasurer"
 	
 	Execute(ecn .. " " .. message)
 	Execute(ecn .. " " .. message2)

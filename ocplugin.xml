@@ -84,6 +84,7 @@
    enabled="n"
    group="OC"
    match="Lord Protector Arkeld gives Ruby of the Court to (?<PlayerName>.*)\."
+   regexp="y"
    script="rubyOC"
    sequence="100"
   >
@@ -92,6 +93,7 @@
    enabled="n"
    group="OC"
    match="D'vinara gives Ruby of the Court to (?<PlayerName>.*)\."
+   regexp="y"
    script="rubyOC"
    sequence="100"
   >
@@ -99,7 +101,7 @@
   <trigger
    enabled="n"
    group="OC"
-   match="A Guardian of the Deep gives Sapphire of the Deep to (?<playerName>.*)\."
+   match="A Guardian of the Deep gives Sapphire of the Deep to (?<PlayerName>.*)\."
    regexp="y"
    script="sapphireOC"
    sequence="100"
@@ -282,7 +284,7 @@ function sapphireOC(name, line, args)
 	ecn = getAliasName()
 	leader_name = gmcp("char.base.name")
 	
-	message = recipient .. ", please give the Sapphire to " .. leader_name
+	message = recipient .. ", please give " .. leader_name .. " the @RSapphire"
 	
 	Execute(ecn .. " " .. message)
 end
@@ -293,7 +295,7 @@ function rubyOC(name, line, args)
 	ecn = getAliasName()
 	leader_name = gmcp("char.base.name")
 	
-	message = recipient .. ", please give the Ruby to " .. leader_name
+	message = recipient .. ", please give " .. leader_name .. " the @RRuby"
 	
 	Execute(ecn .. " " .. message)
 end
@@ -304,7 +306,7 @@ function diamondOC(name, line, args)
 	ecn = getAliasName()
 	leader_name = gmcp("char.base.name")
 	
-	message = recipient .. ", please give the Diamond and the Rune to " .. leader_name
+	message = recipient .. ", please give " .. leader_name .. " the @RDiamond @Wand the @RRune"
 	
 	Execute(ecn .. " " .. message)
 end

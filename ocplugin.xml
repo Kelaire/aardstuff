@@ -32,7 +32,7 @@
    enabled="n"
    group="OC"
    name="OCTestTrigger"
-   match="You give Ruby of the Court to The Keeper of the Court."
+   match="^You give Ruby of the Court to The Keeper of the Court.$"
    script="sigBow"
    sequence="100"
   >
@@ -40,7 +40,7 @@
   <trigger
    enabled="n"
    group="OC"
-   match="You give Sapphire of the Deep to The keeper of the deep."
+   match="^You give Sapphire of the Deep to The keeper of the deep.$"
    script="sigBow"
    sequence="100"
   >
@@ -48,7 +48,7 @@
   <trigger
    enabled="n"
    group="OC"
-   match="You give Emerald of Passage to The Gatekeeper."
+   match="^You give Emerald of Passage to The Gatekeeper.$"
    script="goDown"
    sequence="100"
   >
@@ -57,7 +57,7 @@
    enabled="n"
    group="OC"
    regexp="y"
-   match="The waters begin to swirl and bubble as (?<MobName>.*) is vanquished!"
+   match="^The waters begin to swirl and bubble as (?<MobName>.*) is vanquished!$"
    script="gateAlert"
    sequence="100"
   >
@@ -66,7 +66,7 @@
    enabled="n"
    group="OC"
    regexp="y"
-   match="Asvarien, Lord of the Chosen gives Diamond of the Chosen to (?<PlayerName>.*)\."
+   match="^Asvarien, Lord of the Chosen gives Diamond of the Chosen to (?<PlayerName>.*)\.$"
    script="diamondOC"
    sequence="100"
   >
@@ -74,7 +74,7 @@
   <trigger
    enabled="n"
    group="OC"
-   match="Archmage Zavin gives Ruby of the Court to (?<PlayerName>.*)\."
+   match="^Archmage Zavin gives Ruby of the Court to (?<PlayerName>.*)\.$"
    regexp="y"
    script="rubyOC"
    sequence="100"
@@ -83,7 +83,7 @@
   <trigger
    enabled="n"
    group="OC"
-   match="Lord Protector Arkeld gives Ruby of the Court to (?<PlayerName>.*)\."
+   match="^Lord Protector Arkeld gives Ruby of the Court to (?<PlayerName>.*)\.$"
    regexp="y"
    script="rubyOC"
    sequence="100"
@@ -92,7 +92,7 @@
   <trigger
    enabled="n"
    group="OC"
-   match="D'vinara gives Ruby of the Court to (?<PlayerName>.*)\."
+   match="^D'vinara gives Ruby of the Court to (?<PlayerName>.*)\.$"
    regexp="y"
    script="rubyOC"
    sequence="100"
@@ -101,7 +101,7 @@
   <trigger
    enabled="n"
    group="OC"
-   match="A Guardian of the Deep gives Sapphire of the Deep to (?<PlayerName>.*)\."
+   match="^A Guardian of the Deep gives Sapphire of the Deep to (?<PlayerName>.*)\.$"
    regexp="y"
    script="sapphireOC"
    sequence="100"

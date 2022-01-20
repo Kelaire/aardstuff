@@ -33,6 +33,7 @@
    group="OC"
    name="OCTestTrigger"
    match="^You give Ruby of the Court to The Keeper of the Court.$"
+   regexp="y"
    script="sigBow"
    sequence="100"
   >
@@ -41,6 +42,7 @@
    enabled="n"
    group="OC"
    match="^You give Sapphire of the Deep to The keeper of the deep.$"
+   regexp="y"
    script="sigBow"
    sequence="100"
   >
@@ -49,6 +51,7 @@
    enabled="n"
    group="OC"
    match="^You give Emerald of Passage to The Gatekeeper.$"
+   regexp="y"
    script="goDown"
    sequence="100"
   >

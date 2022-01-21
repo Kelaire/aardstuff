@@ -168,6 +168,15 @@
   >
   </alias>
   <alias
+   match="^oc start$"
+   enabled="y"
+   regexp="y"
+   group="OCAlias"
+   script="startOC"
+   sequence="100"
+  >
+  </alias>
+  <alias
    match="^oc runes (?<playerName>.*)$"
    enabled="y"
    regexp="y"
@@ -281,6 +290,25 @@ function finishOC()
 	Execute(ecn .. " " .. message2)
 	Execute("give diamond keeper")
 	groupName = nil
+end
+
+function startOC()
+	groupLeader = get_info_leader()
+	
+	if groupLeader == nil then
+		Execute("group create NAPS:EDNDS")
+		-- Execute("teb broadcast oc")
+	elseif groupLeader == gmcp("char.base.name") then
+		Execute("group rename NAPS:EDNDS")
+		-- Execute("teb broadcast oc")
+	else
+		ColourNote("Red","","OCPlugin ERROR: You are not the leader in your group, dummy!")
+	end
+end
+
+function get_info_leader()        
+	any, p = CallPlugin("3e7dedbe37e44942dd46d264", "gmcpval", "group.leader")        
+	return p 
 end
 
 -- Send the OC Newbie Message

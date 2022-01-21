@@ -297,10 +297,10 @@ function startOC()
 	
 	if groupLeader == "" then
 		Execute("group create NAPS:EDNDS")
-		-- Execute("teb broadcast oc")
+		Execute("teb broadcast oc")
 	elseif groupLeader == gmcp("char.base.name") then
 		Execute("group rename NAPS:EDNDS")
-		-- Execute("teb broadcast oc")
+		Execute("teb broadcast oc")
 	else
 		ColourNote("Red","","OCPlugin ERROR: You are not the leader in your group, dummy!")
 	end
@@ -434,7 +434,7 @@ function helpOC()
 	ColourNote("green", "", "oc check", "white", "", " - Checks if the plugin triggers are enabled/disabled")
 	ColourNote("green", "", "oc hunt", "white", "", " - Finds the next direction in the maze and renames group")	
 	ColourNote("green", "", "oc newbie", "white", "", " - Sends the OC Newbie text to the group")
---	ColourNote("green", "", "oc start", "white", "", " - create and name the OC group, and broadcast")
+	ColourNote("green", "", "oc start", "white", "", " - create and name the OC group, and broadcast")
 	ColourNote("green", "", "oc finish", "white", "", " - Sends the OC Finished text to the group")
 	ColourNote("green", "", "oc ecn", "white", "", " - Shows your current epic talk alias")
 	ColourNote("green", "", "oc ecn <youralias>", "white", "", " - Sets your epic talk alias to <youralias>")

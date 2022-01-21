@@ -110,6 +110,15 @@
    sequence="100"
   >
   </trigger>
+  <trigger
+   enabled="n"
+   name="huntOCTrigger"
+   match="^You are certain that a proud warhorse is (?<Direction>.*) from here\.$"
+   regexp="y"
+   script="groupRename"
+   sequence="100"
+  >
+  </trigger>
 </triggers>
 
 <!--  Aliases  -->
@@ -177,6 +186,15 @@
   >
   </alias>
   <alias
+   match="^oc hunt$"
+   enabled="y"
+   regexp="y"
+   group="OCAlias"
+   script="huntMob"
+   sequence="100"
+  >
+  </alias>
+  <alias
    match="^oc help$"
    enabled="y"
    regexp="y"
@@ -191,6 +209,7 @@
 
 <![CDATA[
 require "gmcphelper"
+local groupName = nil
 
 -- Set the alias name for the leaders epic text alias
 function setAliasName(name, line, args)
@@ -261,6 +280,7 @@ function finishOC()
 	Execute(ecn .. " " .. message)
 	Execute(ecn .. " " .. message2)
 	Execute("give diamond keeper")
+	groupName = nil
 end
 
 -- Send the OC Newbie Message
@@ -347,6 +367,27 @@ function goDown()
 	Execute(ecn .. " " .. message)
 end
 
+-- Hunt the mob!
+function huntMob()
+	EnableTrigger("huntOCTrigger", true)
+	Execute("hunt warhorse")
+end
+
+-- Rename the group!
+function groupRename(name, line, args)
+	huntDir = args.Direction
+	huntDir = string.upper(string.sub(huntDir,1,1))
+	EnableTrigger("huntOCTrigger", false)
+	
+	if groupName == nil then 
+		groupName = "NAPS:EDNDS:" .. huntDir
+	else
+		groupName = groupName .. huntDir
+	end
+	
+	Execute("group rename " .. groupName)
+end
+
 -- Helper Function - Tell the user how this shit works!
 function helpOC()
 
@@ -363,7 +404,9 @@ function helpOC()
 	ColourNote("green", "", "oc enable", "white", "", " - Enables the triggers for this plugin")
 	ColourNote("green", "", "oc disable", "white", "", " - Disables the triggers for this plugin")
 	ColourNote("green", "", "oc check", "white", "", " - Checks if the plugin triggers are enabled/disabled")
+	ColourNote("green", "", "oc hunt", "white", "", " - Finds the next direction in the maze and renames group")	
 	ColourNote("green", "", "oc newbie", "white", "", " - Sends the OC Newbie text to the group")
+--	ColourNote("green", "", "oc start", "white", "", " - create and name the OC group, and broadcast")
 	ColourNote("green", "", "oc finish", "white", "", " - Sends the OC Finished text to the group")
 	ColourNote("green", "", "oc ecn", "white", "", " - Shows your current epic talk alias")
 	ColourNote("green", "", "oc ecn <youralias>", "white", "", " - Sets your epic talk alias to <youralias>")

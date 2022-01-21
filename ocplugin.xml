@@ -295,7 +295,7 @@ end
 function startOC()
 	groupLeader = get_info_leader()
 	
-	if groupLeader == nil then
+	if groupLeader == "" then
 		Execute("group create NAPS:EDNDS")
 		-- Execute("teb broadcast oc")
 	elseif groupLeader == gmcp("char.base.name") then

@@ -403,6 +403,7 @@ end
 
 -- Rename the group!
 function groupRename(name, line, args)
+	ecn = getAliasName()
 	huntDir = args.Direction
 	huntDir = string.upper(string.sub(huntDir,1,1))
 	EnableTrigger("huntOCTrigger", false)
@@ -414,6 +415,11 @@ function groupRename(name, line, args)
 	end
 	
 	Execute("group rename " .. groupName)
+	
+	if #(groupName) == 16 then
+		message = "Please do @RNOT @wAOE in this room!"
+		Execute(ecn .. " " .. message)
+	end
 end
 
 -- Helper Function - Tell the user how this shit works!

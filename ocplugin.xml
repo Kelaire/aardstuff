@@ -289,7 +289,13 @@ function finishOC()
 	Execute(ecn .. " " .. message)
 	Execute(ecn .. " " .. message2)
 	Execute("give diamond keeper")
+	
+	-- Reset the group name for next run
 	groupName = nil
+	
+	-- Disable the trigger group
+	ColourNote("Green","","OCPlugin NOTICE: Disabling OC Trigger Group.")
+	EnableTriggerGroup ("OC", false)
 end
 
 function startOC()
@@ -298,9 +304,17 @@ function startOC()
 	if groupLeader == "" then
 		Execute("group create NAPS:EDNDS")
 		Execute("teb broadcast oc")
+		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
+		EnableTriggerGroup ("OC", true)
+		ColourNote("Green","","OCPlugin NOTICE: Enabling Auto-Inviter.")
+		Execute("tai enable")
 	elseif groupLeader == gmcp("char.base.name") then
 		Execute("group rename NAPS:EDNDS")
 		Execute("teb broadcast oc")
+		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
+		EnableTriggerGroup ("OC", true)
+		ColourNote("Green","","OCPlugin NOTICE: Enabling Auto-Inviter.")
+		Execute("tai enable")
 	else
 		ColourNote("Red","","OCPlugin ERROR: You are not the leader in your group, dummy!")
 	end
@@ -393,6 +407,9 @@ function goDown()
 	message = "Command: @RDOWN"
 	
 	Execute(ecn .. " " .. message)
+	
+	ColourNote("Green","","OCPlugin NOTICE: Disabling Auto-Inviter.")
+	Execute("tai disable")
 end
 
 -- Hunt the mob!

@@ -1,8 +1,8 @@
 # aardstuff
-##Aardwolf Plugins
+## Aardwolf Plugins
 
 These are my various plugins I've create for aardwolf
 
--newbie_greeter - Sends a random greeting to the newbie channel to the new Aardwolf Player (not automated, still must issue commands!!)
--ocplugin - Oradrin's Chosen helper
--AutoXStatus - Miniwindow to display a few of the "auto" statuses useful for epics (autoloot, autosac, autopk, autoass)
+- newbie_greeter - Sends a random greeting to the newbie channel to the new Aardwolf Player (not automated, still must issue commands!!)
+- ocplugin - Oradrin's Chosen helper
+- AutoXStatus - Miniwindow to display a few of the "auto" statuses useful for epics (autoloot, autosac, autopk, autoass)

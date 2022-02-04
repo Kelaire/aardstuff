@@ -34,7 +34,7 @@
    name="OCTestTrigger"
    match="^You give Ruby of the Court to The Keeper of the Court.$"
    regexp="y"
-   script="sigBow"
+   script="sigBow2"
    sequence="100"
   >
   </trigger>
@@ -399,6 +399,16 @@ function sigBow()
 	message = "All wear signet now. command: @Rbow arb"
 	
 	Execute(ecn .. " " .. message)
+end
+
+-- Announce directions for wearing signet and bowing
+function sigBow2()
+	ecn = getAliasName()
+	message = "All wear signet now. command: @Rbow arb"
+	groupName = groupName .. ":NED"
+	
+	Execute(ecn .. " " .. message)
+	Execute("group rename " .. groupName)
 end
 
 -- Anounce to move "DOWN"

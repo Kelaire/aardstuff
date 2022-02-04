@@ -424,14 +424,10 @@ function mouseup(flags, hotspot_id)
 		local result = WindowMenu(window.id, 
 			WindowInfo(window.id, 14),
 			WindowInfo(window.id, 15),
-			"Toggle Numbers|Gag Map Output|-|Bring to front|Send to back")		
+			"Bring to front|Send to back")		
 		
 		if (result ~= "" and IsPluginInstalled(z_order_plugin) and GetPluginInfo(z_order_plugin, 17)) then
-			if result == "Toggle Numbers" then
-				ToggleNumbers()
-			elseif result == "Gag Map Output" then
-				GagOutput()
-			elseif (result == "Send to back") then 
+			if result == "Send to back" then 
 				CallPlugin(z_order_plugin, "dropMe", window.id)
 			else
 				CallPlugin(z_order_plugin, "boostMe", window.id)

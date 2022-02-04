@@ -235,6 +235,23 @@ function OnPluginInstall()
 	InitializeWindow()
 end
 
+function OnPluginBroadcast (msg, id, name, text)
+	if (id == '3e7dedbe37e44942dd46d264') then
+		if (text == 'comm.tick') then
+			if initialize_config then
+				return
+			else
+				configSend()
+				initialize_config = true
+			end
+		end
+	end
+end
+
+function OnPluginConnect()
+	initialize_config = false
+end
+
 function OnPluginDisable()
 	HideWindow()
 end

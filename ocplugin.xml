@@ -302,14 +302,14 @@ function startOC()
 	groupLeader = get_info_leader()
 	
 	if groupLeader == "" then
-		Execute("group create NAPS:EDNDS")
+		Execute("group create NAPS:ED - Pick a side!")
 		Execute("teb broadcast oc")
 		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
 		EnableTriggerGroup ("OC", true)
 		ColourNote("Green","","OCPlugin NOTICE: Enabling Auto-Inviter.")
 		Execute("tai enable")
 	elseif groupLeader == gmcp("char.base.name") then
-		Execute("group rename NAPS:EDNDS")
+		Execute("group rename NAPS:ED - Pick a side!")
 		Execute("teb broadcast oc")
 		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
 		EnableTriggerGroup ("OC", true)
@@ -417,6 +417,8 @@ function goDown()
 	message = "Command: @RDOWN"
 	
 	Execute(ecn .. " " .. message)
+	
+	Execute("group rename NAPS:EDNDS")
 	
 	ColourNote("Green","","OCPlugin NOTICE: Disabling Auto-Inviter.")
 	Execute("tai disable")

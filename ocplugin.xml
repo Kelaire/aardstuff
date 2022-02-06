@@ -302,7 +302,7 @@ function startOC()
 	groupLeader = get_info_leader()
 	
 	if groupLeader == "" then
-		groupName = "NAPS:EDNDS"
+		groupName = "@WNAPS:EDNDS:@Y"
 		Execute("group create NAPS:ED - Pick a side!")
 		Execute("teb broadcast oc")
 		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
@@ -310,7 +310,7 @@ function startOC()
 		ColourNote("Green","","OCPlugin NOTICE: Enabling Auto-Inviter.")
 		Execute("tai enable")
 	elseif groupLeader == gmcp("char.base.name") then
-		groupName = "NAPS:EDNDS"
+		groupName = "@WNAPS:EDNDS:@Y"
 		Execute("group rename NAPS:ED - Pick a side!")
 		Execute("teb broadcast oc")
 		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
@@ -407,7 +407,7 @@ end
 function sigBow2()
 	ecn = getAliasName()
 	message = "All wear signet now. command: @Rbow arb"
-	groupName = groupName .. ":NED"
+	groupName = groupName .. "@W:NED"
 	
 	Execute(ecn .. " " .. message)
 	Execute("group rename " .. groupName)
@@ -440,7 +440,7 @@ function groupRename(name, line, args)
 	EnableTrigger("huntOCTrigger", false)
 	
 	if groupName == nil then 
-		groupName = "NAPS:EDNDS:" .. huntDir
+		groupName = "@WNAPS:EDNDS:@Y" .. huntDir
 	else
 		groupName = groupName .. huntDir
 	end

@@ -15,7 +15,7 @@
    save_state="y"
    date_written="2022-01-19 10:28:38"
    requires="5.06"
-   version="1.1"
+   version="1.2"
    >
 
 </plugin>
@@ -447,7 +447,7 @@ function groupRename(name, line, args)
 	
 	Execute("group rename " .. groupName)
 	
-	if #(groupName) == 16 then
+	if #(groupName) == 22 then
 		message = "Please do @RNOT @wAOE in this room!"
 		Execute(ecn .. " " .. message)
 	end

@@ -45,6 +45,25 @@
 
   <trigger
    enabled="y"
+   match="You do not page long messages."
+   script="noPageSize"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   match="You currently display (?<pageNum>\d*) lines per page\."
+   script="getPageSize"
+   regexp="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+
+  <trigger
+   enabled="y"
    match="{kelstatus}"
    regexp="n"
    script="startCapture"
@@ -211,6 +230,7 @@
 <![CDATA[
 
 require "serialize"
+require "wait"
 
 -- Window variables
 local z_order_plugin = "462b665ecb569efbf261422f"
@@ -223,6 +243,9 @@ local headerSize = 20
 
 -- On install, reset, get data, and draw the window.
 function OnPluginInstall()
+	currentPageSize = 0 -- Set pagesize in case this breaks
+	SendNoEcho("pagesize")
+	SendNoEcho("pagesize 0")
 	resetAutoData()
 	if (GetVariable("window") ~= nil) then	-- load saved variables if they exist
 		luastmt = "obj = " .. GetVariable("window")
@@ -254,6 +277,18 @@ end
 
 function OnPluginDisable()
 	HideWindow()
+end
+
+function OnPluginClose()
+    OnPluginDisable()
+end
+
+function getPageSize(name, line, args)
+	currentPageSize = args.pageNum
+end
+
+function noPageSize(name, line, args)
+	currentPageSize = 0
 end
 
 -- Window Defaults
@@ -462,13 +497,19 @@ function resetAutoData()
 	bgColor = '#2ae4f5';
 	
 	configSend()
+	
+	SendNoEcho("pagesize" .. currentPageSize)
 end
 
 -- Update the window
 function configSend(name, line, args)
-	SendNoEcho("echo {kelstatus}")
-	SendNoEcho("config")
-	SendNoEcho("echo {/kelstatus}")
+	    wait.make (function()
+            wait.time(2)
+			SendNoEcho("echo {kelstatus}")
+			SendNoEcho("config")
+			SendNoEcho("echo {/kelstatus}") 
+    end)
+
 end
 
 -- Start the capture of the config output

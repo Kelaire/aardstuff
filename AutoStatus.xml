@@ -44,21 +44,23 @@
 <triggers>
 
   <trigger
-   enabled="y"
+   enabled="n"
    match="You do not page long messages."
    script="noPageSize"
    omit_from_output="y"
    sequence="100"
+   group="pagecapturekel"
   >
   </trigger>
   
   <trigger
-   enabled="y"
-   match="You currently display (?<pageNum>\d*) lines per page\."
+   enabled="n"
+   match="You currently display (?<pageNum>.*) lines per page\."
    script="getPageSize"
    regexp="y"
    omit_from_output="y"
    sequence="100"
+   group="pagecapturekel"
   >
   </trigger>
 
@@ -240,22 +242,29 @@ local colours = {
 	header = "#474747",
 }
 local headerSize = 20
+local currentPageSize = 0 
 
 -- On install, reset, get data, and draw the window.
 function OnPluginInstall()
-	currentPageSize = 0 -- Set pagesize in case this breaks
-	SendNoEcho("pagesize")
-	SendNoEcho("pagesize 0")
-	resetAutoData()
-	if (GetVariable("window") ~= nil) then	-- load saved variables if they exist
-		luastmt = "obj = " .. GetVariable("window")
-		assert (loadstring (luastmt or "")) ()		
-		window = obj
-	else
-		SetWindowDefaults() -- load window defaults
-	end					
+	wait.make (function()
+			EnableTriggerGroup ("pagecapturekel", true)
+            SendNoEcho("pagesize")
+			wait.time(.5)
+			EnableTriggerGroup ("pagecapturekel", false)
+			wait.time(.5)
+			SendNoEcho("pagesize 0")
+			wait.time(.5)
+			resetAutoData()
+			if (GetVariable("window") ~= nil) then	-- load saved variables if they exist
+				luastmt = "obj = " .. GetVariable("window")
+				assert (loadstring (luastmt or "")) ()		
+				window = obj
+			else
+				SetWindowDefaults() -- load window defaults
+			end					
 
-	InitializeWindow()
+			InitializeWindow()
+    end)
 end
 
 function OnPluginBroadcast (msg, id, name, text)
@@ -285,6 +294,7 @@ end
 
 function getPageSize(name, line, args)
 	currentPageSize = args.pageNum
+	ColourNote("red","","Pagesize: " .. currentPageSize)
 end
 
 function noPageSize(name, line, args)
@@ -498,7 +508,7 @@ function resetAutoData()
 	
 	configSend()
 	
-	SendNoEcho("pagesize" .. currentPageSize)
+	SendNoEcho("pagesize " .. currentPageSize)
 end
 
 -- Update the window

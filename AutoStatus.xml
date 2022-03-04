@@ -246,25 +246,15 @@ local currentPageSize = 0
 
 -- On install, reset, get data, and draw the window.
 function OnPluginInstall()
-	wait.make (function()
-			EnableTriggerGroup ("pagecapturekel", true)
-            SendNoEcho("pagesize")
-			wait.time(.5)
-			EnableTriggerGroup ("pagecapturekel", false)
-			wait.time(.5)
-			SendNoEcho("pagesize 0")
-			wait.time(.5)
-			resetAutoData()
-			if (GetVariable("window") ~= nil) then	-- load saved variables if they exist
-				luastmt = "obj = " .. GetVariable("window")
-				assert (loadstring (luastmt or "")) ()		
-				window = obj
-			else
-				SetWindowDefaults() -- load window defaults
-			end					
-
-			InitializeWindow()
-    end)
+	resetAutoData()
+	if (GetVariable("window") ~= nil) then	-- load saved variables if they exist
+		luastmt = "obj = " .. GetVariable("window")
+		assert (loadstring (luastmt or "")) ()		
+		window = obj
+	else
+		SetWindowDefaults() -- load window defaults
+	end					
+	InitializeWindow()
 end
 
 function OnPluginBroadcast (msg, id, name, text)
@@ -273,7 +263,7 @@ function OnPluginBroadcast (msg, id, name, text)
 			if initialize_config then
 				return
 			else
-				configSend()
+				resetAutoData()
 				initialize_config = true
 			end
 		end
@@ -506,9 +496,19 @@ function resetAutoData()
 	AScolor = '#2ae4f5';
 	bgColor = '#2ae4f5';
 	
-	configSend()
+	wait.make (function()
+			EnableTriggerGroup ("pagecapturekel", true)
+            SendNoEcho("pagesize")
+			wait.time(.5)
+			EnableTriggerGroup ("pagecapturekel", false)
+			wait.time(.5)
+			SendNoEcho("pagesize 0")
+			wait.time(.5)
+			configSend()
+			wait.time(.5)
+			SendNoEcho("pagesize " .. currentPageSize)
+    end)
 	
-	SendNoEcho("pagesize " .. currentPageSize)
 end
 
 -- Update the window

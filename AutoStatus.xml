@@ -246,10 +246,10 @@ local currentPageSize = 0
 
 -- On install, reset, get data, and draw the window.
 function OnPluginInstall()
-	resetAutoData()
+	--resetAutoData()
 	initialize_config = true
-	if (GetVariable("window") ~= nil) then	-- load saved variables if they exist
-		luastmt = "obj = " .. GetVariable("window")
+	if (GetVariable("astatuswindow") ~= nil) then	-- load saved variables if they exist
+		luastmt = "obj = " .. GetVariable("astatuswindow")
 		assert (loadstring (luastmt or "")) ()		
 		window = obj
 	else
@@ -285,7 +285,6 @@ end
 
 function getPageSize(name, line, args)
 	currentPageSize = args.pageNum
-	ColourNote("red","","Pagesize: " .. currentPageSize)
 end
 
 function noPageSize(name, line, args)
@@ -375,7 +374,7 @@ end
 
 -- Save save save!
 function SaveWindow()
-	SetVariable("window", serialize.save_simple(window))
+	SetVariable("astatuswindow", serialize.save_simple(window))
 end	
 
 -- Let's do the thing and draw the window!
@@ -414,6 +413,7 @@ function Draw(win)
 	WindowText(win.id, win.font, ALStatus, 100, 44, 0, 0, ColourNameToRGB(ALcolor), true)
 	WindowText(win.id, win.font, ASStatus, 100, 56, 0, 0, ColourNameToRGB(AScolor), true)
 	
+	SaveWindow()	
 end	
 
 -- Handlers

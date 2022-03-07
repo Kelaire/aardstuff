@@ -246,7 +246,7 @@ local currentPageSize = 0
 
 -- On install, reset, get data, and draw the window.
 function OnPluginInstall()
-	--resetAutoData()
+	setDefaults()
 	initialize_config = true
 	if (GetVariable("astatuswindow") ~= nil) then	-- load saved variables if they exist
 		luastmt = "obj = " .. GetVariable("astatuswindow")
@@ -486,7 +486,7 @@ end
 
 
 -- DATA Stuff
-function resetAutoData()
+function setDefaults()
 	AAStatus = '';
 	APKStatus = '';
 	ALStatus = '';
@@ -496,6 +496,10 @@ function resetAutoData()
 	ALcolor = '#2ae4f5';
 	AScolor = '#2ae4f5';
 	bgColor = '#2ae4f5';
+end
+
+function resetAutoData()
+	setDefaults()
 	
 	wait.make (function()
 			EnableTriggerGroup ("pagecapturekel", true)

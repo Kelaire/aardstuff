@@ -247,7 +247,6 @@ local currentPageSize = 0
 -- On install, reset, get data, and draw the window.
 function OnPluginInstall()
 	setDefaults()
-	initialize_config = true
 	if (GetVariable("astatuswindow") ~= nil) then	-- load saved variables if they exist
 		luastmt = "obj = " .. GetVariable("astatuswindow")
 		assert (loadstring (luastmt or "")) ()		

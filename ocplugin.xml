@@ -308,7 +308,7 @@ function startOC()
 		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
 		EnableTriggerGroup ("OC", true)
 		ColourNote("Green","","OCPlugin NOTICE: Enabling Auto-Inviter.")
-		--DoAfterSpecial(2,Execute("tai enable"),12)
+		DoAfterSpecial(2,Execute("tai enable"),12)
 	elseif groupLeader == gmcp("char.base.name") then
 		groupName = "@WNAPS:EDNDS:@Y"
 		Execute("group rename NAPS:ED - Pick a side!")
@@ -316,7 +316,7 @@ function startOC()
 		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
 		EnableTriggerGroup ("OC", true)
 		ColourNote("Green","","OCPlugin NOTICE: Enabling Auto-Inviter.")
-		--DoAfterSpecial(2,Execute("tai enable"),12)
+		DoAfterSpecial(2,Execute("tai enable"),12)
 	else
 		ColourNote("Red","","OCPlugin ERROR: You are not the leader in your group, dummy!")
 	end

@@ -299,7 +299,7 @@ function finishOC()
 end
 
 function startOC()
-	groupLeader = get_info_leader()
+	groupLeader = get_info_leader()	
 	
 	if groupLeader == "" then
 		groupName = "@WNAPS:EDNDS:@Y"
@@ -308,7 +308,7 @@ function startOC()
 		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
 		EnableTriggerGroup ("OC", true)
 		ColourNote("Green","","OCPlugin NOTICE: Enabling Auto-Inviter.")
-		Execute("tai enable")
+		--DoAfterSpecial(2,Execute("tai enable"),12)
 	elseif groupLeader == gmcp("char.base.name") then
 		groupName = "@WNAPS:EDNDS:@Y"
 		Execute("group rename NAPS:ED - Pick a side!")
@@ -316,7 +316,7 @@ function startOC()
 		ColourNote("Green","","OCPlugin NOTICE: Enabling OC Trigger Group.")
 		EnableTriggerGroup ("OC", true)
 		ColourNote("Green","","OCPlugin NOTICE: Enabling Auto-Inviter.")
-		Execute("tai enable")
+		--DoAfterSpecial(2,Execute("tai enable"),12)
 	else
 		ColourNote("Red","","OCPlugin ERROR: You are not the leader in your group, dummy!")
 	end
@@ -447,7 +447,7 @@ function groupRename(name, line, args)
 	
 	Execute("group rename " .. groupName)
 	
-	if #(groupName) == 22 then
+	if #(groupName) == 20 then
 		message = "Please do @RNOT @wAOE in this room!"
 		Execute(ecn .. " " .. message)
 	end

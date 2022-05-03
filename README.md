@@ -8,3 +8,4 @@ These are my various plugins I've create for aardwolf
 - newbie_greeter - Sends a random greeting to the newbie channel to the new Aardwolf Player (not automated, still must issue commands!!)
 - ocplugin - Oradrin's Chosen helper
 - WhatRoom - Display the ID of the room you are currently in in a miniwindow
+- Spaz - Simple miniwindow database to allow you to set information about areas you want to level in and display them.
